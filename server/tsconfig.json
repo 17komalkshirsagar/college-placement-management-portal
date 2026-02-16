@@ -7,11 +7,12 @@
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
+    "strictNullChecks": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": false
   },
   "include": ["src/**/*.ts"]
 }

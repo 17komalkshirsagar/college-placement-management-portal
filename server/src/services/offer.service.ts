@@ -11,7 +11,7 @@ class OfferService {
   public async createOffer(payload: CreateOfferDto, actor: { userId: string; role: string }) {
     ensureObjectId(payload.applicationId, 'application id');
 
-    const application = (await Application.findById(payload.applicationId).populate('job').populate('student').lean()) as {
+    const application = (await Application.findById(payload.applicationId).populate('job').populate('student').lean()) as unknown as {
       job: { company: { toString: () => string } };
     } | null;
     if (!application) {

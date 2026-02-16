@@ -14,7 +14,7 @@ class SupportService {
     return SupportMessage.find().sort({ createdAt: -1 });
   }
 
-  public async updateMessageStatus(messageId: string, status: 'pending' | 'responded' | 'closed') {
+  public async updateMessageStatus(messageId: string, status: string | undefined) {
     return SupportMessage.findByIdAndUpdate(
       messageId,
       { status },

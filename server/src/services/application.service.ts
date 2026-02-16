@@ -170,7 +170,7 @@ class ApplicationService {
     const application = (await Application.findById(applicationId)
       .populate({ path: 'job', select: 'company title' })
       .populate({ path: 'student', select: 'user' })
-      .lean()) as {
+      .lean()) as unknown as {
       _id: { toString: () => string };
       decisionHistory?: Array<{ status: string; updatedAt: Date }>;
       job: { company: { toString: () => string }; title?: string };

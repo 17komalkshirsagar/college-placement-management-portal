@@ -175,7 +175,7 @@ export const seedComprehensiveData = async (): Promise<void> => {
     ]);
 
     console.log('Generating analytics...');
-    const selectedCount = applications.filter((application) => application.status === 'selected').length;
+    const selectedCount = applications.filter((application) => (application.status as string) === 'selected').length;
 
     await Analytics.create({
       year: 2026,

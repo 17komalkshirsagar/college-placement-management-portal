@@ -39,13 +39,19 @@ router.patch(
   '/:id/status',
   asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
     const { id } = req.params;
-    const { status } = req.body;
+    const statusInput = req.body.status;
 
-    if (!status || !['pending', 'responded', 'closed'].includes(status)) {
+    if (typeof statusInput !== 'string') {
       return res.status(400).json({ message: 'Invalid status' });
     }
 
-    const updatedMessage = await supportService.updateMessageStatus(id, status as string);
+    const status: string = statusInput || 'pending';
+    const validStatuses = ['pending', 'responded', 'closed'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ message: 'Invalid status' });
+    }
+
+    const updatedMessage = await supportService.updateMessageStatus(id, status);
 
     if (!updatedMessage) {
       return res.status(404).json({ message: 'Message not found' });

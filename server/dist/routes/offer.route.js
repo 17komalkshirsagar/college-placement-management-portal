@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { offerController } from '../controllers/offer.controller.js';
+import { authMiddleware } from '../middlewares/auth.middleware.js';
+import { roleMiddleware } from '../middlewares/role.middleware.js';
+import { validateBody } from '../middlewares/validate.middleware.js';
+import { createOfferDtoSchema, respondOfferDtoSchema } from '../validators/offer.validator.js';
+const offerRouter = Router();
+offerRouter.use(authMiddleware);
+offerRouter.post('/', roleMiddleware('company', 'admin'), validateBody(createOfferDtoSchema), offerController.create);
+offerRouter.patch('/:offerId/respond', roleMiddleware('student'), validateBody(respondOfferDtoSchema), offerController.respond);
+export default offerRouter;

@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-const defaultAllowedOrigins = ['http://localhost:3002', 'http://localhost:3000', 'http://localhost:5173'];
+const defaultAllowedOrigins = ['http://localhost:3002', 'http://localhost:3000', 'http://localhost:5173', "https://college-placement-clent.vercel.app"];
 const configuredOrigins = (env.FRONTEND_URLS ?? '')
   .split(',')
   .map((origin) => origin.trim())

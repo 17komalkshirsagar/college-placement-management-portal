@@ -5,9 +5,9 @@ import { env } from './config/env.js';
 async function bootstrap(): Promise<void> {
   await connectDatabase();
 
-  app.listen(env.PORT, () => {
-    console.log(`Server running on port ${env.PORT}`);
-  });
+  // app.listen(env.PORT, () => {
+  //   console.log(`Server running on port ${env.PORT}`);
+  // });
 }
 
 bootstrap().catch((error: unknown) => {

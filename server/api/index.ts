@@ -1,8 +1,12 @@
-import app from '../src/app.js';
-import { createServer } from 'http';
+import express from "express";
+import serverless from "serverless-http";
 
-const server = createServer(app);
+const app = express();
 
-export default function handler(req, res) {
-  app(req, res);
-}
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({ message: "Working 🚀" });
+});
+
+export default serverless(app);

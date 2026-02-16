@@ -257,7 +257,8 @@ class ApplicationService {
       
       await Promise.all(
         admins.map(async (admin) => {
-          const studentData = await StudentProfile.findById(application.student._id).populate('user').lean();
+          const studentId = (application.student as { _id?: unknown })?._id;
+          const studentData = studentId ? await StudentProfile.findById(studentId).populate('user').lean() : null;
           const studentName = studentData?.user ? (studentData.user as { fullName?: string }).fullName : 'a student';
           
           const emailContent = `

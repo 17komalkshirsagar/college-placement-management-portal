@@ -69,7 +69,7 @@ export const seedComprehensiveData = async (): Promise<void> => {
 
     const students = await StudentProfile.insertMany([
       {
-        user: studentUsers[0]._id,
+        user: studentUsers[0]!._id,
         mobileNumber: '9876543210',
         course: 'B.Tech',
         branch: 'Computer Science',
@@ -77,7 +77,7 @@ export const seedComprehensiveData = async (): Promise<void> => {
         skills: ['TypeScript', 'Node.js', 'React'],
       },
       {
-        user: studentUsers[1]._id,
+        user: studentUsers[1]!._id,
         mobileNumber: '9123456543',
         course: 'B.Tech',
         branch: 'Information Technology',
@@ -108,7 +108,7 @@ export const seedComprehensiveData = async (): Promise<void> => {
 
     const companies = await CompanyProfile.insertMany([
       {
-        user: companyUsers[0]._id,
+        user: companyUsers[0]!._id,
         companyName: 'Acme Technologies',
         hrEmail: 'hr@acme.com',
         hrMobileNumber: '9000011122',
@@ -118,7 +118,7 @@ export const seedComprehensiveData = async (): Promise<void> => {
         isActive: true,
       },
       {
-        user: companyUsers[1]._id,
+        user: companyUsers[1]!._id,
         companyName: 'Globex Systems',
         hrEmail: 'hr@globex.com',
         hrMobileNumber: '9000033344',
@@ -132,7 +132,7 @@ export const seedComprehensiveData = async (): Promise<void> => {
     console.log('Seeding jobs...');
     const jobs = await Job.insertMany([
       {
-        company: companies[0]._id,
+        company: companies[0]!._id,
         title: 'Software Engineer',
         description: 'Build scalable backend systems',
         location: 'Bengaluru',
@@ -142,7 +142,7 @@ export const seedComprehensiveData = async (): Promise<void> => {
         isActive: true,
       },
       {
-        company: companies[1]._id,
+        company: companies[1]!._id,
         title: 'Data Analyst',
         description: 'Analyze product and business metrics',
         location: 'Pune',
@@ -156,8 +156,8 @@ export const seedComprehensiveData = async (): Promise<void> => {
     console.log('Seeding applications...');
     const applications = await Application.insertMany([
       {
-        student: students[0]._id,
-        job: jobs[0]._id,
+        student: students[0]!._id,
+        job: jobs[0]!._id,
         status: 'shortlisted',
         resumeUrl: 'http://localhost:5001/uploads/resumes/sample-resume-1.pdf',
         decisionHistory: [
@@ -166,8 +166,8 @@ export const seedComprehensiveData = async (): Promise<void> => {
         ],
       },
       {
-        student: students[1]._id,
-        job: jobs[1]._id,
+        student: students[1]!._id,
+        job: jobs[1]!._id,
         status: 'applied',
         resumeUrl: 'http://localhost:5001/uploads/resumes/sample-resume-2.pdf',
         decisionHistory: [{ status: 'applied', updatedAt: new Date('2026-06-03T00:00:00.000Z') }],

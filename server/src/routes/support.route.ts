@@ -45,7 +45,7 @@ router.patch(
       return res.status(400).json({ message: 'Invalid status' });
     }
 
-    const updatedMessage = await supportService.updateMessageStatus(id, status);
+    const updatedMessage = await supportService.updateMessageStatus(id, status as string);
 
     if (!updatedMessage) {
       return res.status(404).json({ message: 'Message not found' });
